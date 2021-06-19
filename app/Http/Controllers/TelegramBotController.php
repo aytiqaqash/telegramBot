@@ -27,7 +27,7 @@ class TelegramBotController extends Controller
 
     public function setWebhook()
     {
-        $domain = 'https://389b8699e2ab.ngrok.io/';
+        $domain =  env('APP_URL_NGROK') ;
 
         $response = Telegram::setWebhook(['url' => $domain . env('TELEGRAM_BOT_TOKEN') . '/webhook']);
 
