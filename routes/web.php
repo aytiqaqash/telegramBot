@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TelegramBotController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return \Illuminate\Support\Facades\Redirect::away('https://www.youtube.com/c/AyTiQaqa%C5%9F/videos');
 });
+Route::get('/setWebhook',[TelegramBotController::class,'setWebhook']);
+Route::get('/getWebhookInfo',[TelegramBotController::class,'getWebhookInfo']);
+Route::post(env('TELEGRAM_BOT_TOKEN') .'/webhook', [TelegramBotController::class,'handleRequest']);
+
+
